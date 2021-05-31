@@ -1,0 +1,11 @@
+﻿  AIChess.cpp
+  Chess.cpp
+D:\Программирование\GitKraken\Chess 10\Chess2\Chess1\Chess.cpp(60,18): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess 10\Chess2\Chess1\Chess.cpp(61,18): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess 10\Chess2\Chess1\Chess.cpp(278,37): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess 10\Chess2\Chess1\Chess.cpp(278,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess 10\Chess2\Chess1\Chess.cpp(283,37): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess 10\Chess2\Chess1\Chess.cpp(283,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Main.cpp
+  Создание кода...
+  Chess1.vcxproj -> D:\Программирование\GitKraken\Chess 10\Chess2\Debug\Chess1.exe

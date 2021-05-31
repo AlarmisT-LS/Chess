@@ -1,0 +1,12 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (Chess1.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  AIChess.cpp
+  Chess.cpp
+D:\Программирование\GitKraken\Chess\Chess1\Chess.cpp(60,18): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess\Chess1\Chess.cpp(61,18): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess\Chess1\Chess.cpp(278,37): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess\Chess1\Chess.cpp(278,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess\Chess1\Chess.cpp(283,37): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программирование\GitKraken\Chess\Chess1\Chess.cpp(283,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Main.cpp
+  Создание кода...
+  Chess1.vcxproj -> D:\Программирование\GitKraken\Chess\x64\Debug\Chess.exe
