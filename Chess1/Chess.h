@@ -75,6 +75,12 @@ private:
 
 	void checkingEndGame();
 
+	void mouseButtonPressedOnPawn(Vector2i pos);
+
+	void mouseButtonReleasedOnPawn(Vector2i pos);
+
+	void movePawnAI();
+
 	void renderingSprites(Vector2i poz);
 };
 
