@@ -51,85 +51,12 @@ void Chess::StartGame()
 
 			checkingEndGame();
 
-			if (e.type == Event::MouseButtonPressed)
-			{
-				if (e.key.code == Mouse::Left)
-				{
-					if (board[y][x] != 0)
-					{
-						dx = pos.x - x * 100;
-						dy = pos.y - y * 100;
+			mouseButtonPressedOnPawn(pos);
 
+			movePawnAI();
 
-						if (board[y][x] == PawnWHITE && travel == 0)
-						{
-							movingPartNumber = PawnWHITE;
-							Move = PawnWh;
-							board[y][x] = 0;
-						}
-						if (board[y][x] == 0)
-						{
-							move = 1;
-							oldPos.x = x;
-							oldPos.y = y;
-						}
-					}
-				}
-			}
-
-			if (travel == 1)
-			{
-				//coordinates[0] == currentX, coordinates[1] == currentY 
-				//coordinates[2] == newX, coordinates[3] == newY
-				std::vector<int> coordinates(4);
-
-				coordinates = aiChess.bestmove(board);
-
-				if (pawnMovement(coordinates[0], coordinates[1], coordinates[2], coordinates[3]))
-				{
-					std::swap(board[coordinates[1]][coordinates[0]], board[coordinates[3]][coordinates[2]]);
-				}
-
-				travel = 0;
-			}
-
-			if (e.type == Event::MouseButtonReleased)
-			{
-				if (e.key.code == Mouse::Left)
-				{
-					int ok = 2;
-
-					if (movingPartNumber == PawnWHITE && move == 1)
-					{
-						ok = pawnMovement(oldPos.x, oldPos.y, x, y);
-					}
-
-					if (movingPartNumber == PawnBLACK && move == 1)
-					{
-						ok = pawnMovement(oldPos.x, oldPos.y, x, y);
-					}
-
-					if (ok == 1)
-					{
-						board[y][x] = movingPartNumber;
-
-						if (travel == 0) //Change of move, white to black
-						{
-
-							travel = 1;
-						}
-
-					}
-					else if (ok == 0)
-					{
-						board[oldPos.y][oldPos.x] = movingPartNumber;
-					}
-					move = 0;
-				}
-			}
+			mouseButtonReleasedOnPawn(pos);
 		}
-
-
 		renderingSprites(pos);
 		window.display();
 	}
@@ -253,6 +180,84 @@ void Chess::checkingEndGame()
 				gameOver = 0;
 			}
 		}
+	}
+}
+
+void Chess::mouseButtonPressedOnPawn(Vector2i pos)
+{
+	if (e.type == Event::MouseButtonPressed)
+	{
+		if (e.key.code == Mouse::Left)
+		{
+			if (board[y][x] != 0)
+			{
+				dx = pos.x - x * 100;
+				dy = pos.y - y * 100;
+
+
+				if (board[y][x] == PawnWHITE && travel == 0)
+				{
+					movingPartNumber = PawnWHITE;
+					Move = PawnWh;
+					board[y][x] = 0;
+				}
+				if (board[y][x] == 0)
+				{
+					move = 1;
+					oldPos.x = x;
+					oldPos.y = y;
+				}
+			}
+		}
+	}
+}
+
+void Chess::mouseButtonReleasedOnPawn(Vector2i pos)
+{
+	if (e.type == Event::MouseButtonReleased)
+	{
+		if (e.key.code == Mouse::Left)
+		{
+			int ok = 2;
+
+			if (movingPartNumber == PawnWHITE && move == 1)
+			{
+				ok = pawnMovement(oldPos.x, oldPos.y, x, y);
+			}
+			if (ok == 1)
+			{
+				board[y][x] = movingPartNumber;
+
+				if (travel == 0) //Change of move, white to black
+				{
+
+					travel = 1;
+				}
+
+			}
+			else if (ok == 0)
+			{
+				board[oldPos.y][oldPos.x] = movingPartNumber;
+			}
+			move = 0;
+		}
+	}
+}
+
+void Chess::movePawnAI()
+{
+	if (travel == 1)
+	{
+		//coordinates[0] {currentX}, coordinates[1] {currentY} 
+		//coordinates[2] {newX}, coordinates[3] {newY}
+		vector<int> coordinates(4);
+		coordinates = aiChess.bestmove(board);
+
+		if (pawnMovement(coordinates[0], coordinates[1], coordinates[2], coordinates[3]))
+		{
+			std::swap(board[coordinates[1]][coordinates[0]], board[coordinates[3]][coordinates[2]]);
+		}
+		travel = 0;
 	}
 }
 
